@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    p{color: blueviolet;}
+</style>
+<p>会影响外部样式</p>
+
+<template id="my-paragraph">
+    <style>
+        p{color: red;}
+    </style>
+    <p>My paragraph</p>
+    <slot name="my-text">My default text</slot>
+</template>
+<script>
+  customElements.define('my-paragraph',
+    class extends HTMLElement {
+      constructor() {
+        super();
+        let template = document.getElementById('my-paragraph');
+        let templateContent = template.content.cloneNode(true);
+        this.attachShadow({mode: 'open'}).appendChild(templateContent);
+      }
+    })
+</script>
+
+<my-paragraph>
+    <p slot="my-text">slot text</p>
+</my-paragraph>
+
+
+</body>
+</html>

@@ -4,10 +4,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "buildA": "vue-cli-service build --target wc  src/components/compA.vue  --dest dista",
+    "buildB": "vue-cli-service build --target wc  src/components/compB.vue --dest distb",
+    "buildC": "vue-cli-service build --target wc --name my-custom-element ./src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/web-component-wrapper": "^1.3.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
